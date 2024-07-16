@@ -1,6 +1,6 @@
 <p align="center">
   <a href="#">
-    <img src="assets/fe/assets/img/logo_dark.png" alt="HeRa logo" width="75" height="75">
+    <img src="assets/fe/assets/img/logo_dark.png" alt="HeRa logo" height="100">
   </a>
 </p>
 
