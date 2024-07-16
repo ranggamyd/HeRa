@@ -11,7 +11,9 @@ $this->load->view('_partials/header');
 
         <div class="card shadow-sm">
             <div class="card-header">
-                <a href="#" class="btn btn-sm btn-primary shadow-sm" data-toggle="modal" data-target="#tambah_admin"><i class="fas fa-plus-circle mr-2"></i>Tambah data</a>
+                <?php if ($this->session->userdata('id_admin') == 1) : ?>
+                    <a href="#" class="btn btn-sm btn-primary shadow-sm" data-toggle="modal" data-target="#tambah_admin"><i class="fas fa-plus-circle mr-2"></i>Tambah data</a>
+                <?php endif ?>
             </div>
             <div class="card-body">
                 <div class="table-responsive">

@@ -72,7 +72,7 @@
             </li>
             <li><a class="nav-link scrollto" href="#contact">Contact</a></li> -->
           <li>
-            <a class="getstarted" href="/login"><i class="bi bi-box-arrow-in-right me-2"></i> Login</a>
+            <a class="getstarted" href="<?= base_url() ?>/login"><i class="bi bi-box-arrow-in-right me-2"></i> Login</a>
           </li>
         </ul>
         <i class="bi bi-list mobile-nav-toggle"></i>
