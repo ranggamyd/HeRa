@@ -19,8 +19,9 @@ $this->load->view('_partials/header');
                     <table class="table table-bordered table-striped" id="dataTable">
                         <thead class="text-center">
                             <th>#</th>
-                            <th>Kode Penyakit</th>
+                            <th>Kode</th>
                             <th>Nama Penyakit</th>
+                            <th>Deskripsi</th>
                             <th>Solusi</th>
                             <th><i class="fas fa-cogs"></i></th>
                         </thead>
@@ -32,7 +33,8 @@ $this->load->view('_partials/header');
                                     <td class="text-center"><?= $no++; ?></td>
                                     <td><?= $item['kode_penyakit']; ?></span></td>
                                     <td><?= $item['nama_penyakit']; ?></span></td>
-                                    <td><?= $item['solusi']; ?></span></td>
+                                    <td><?= nl2br($item['deskripsi']); ?></span></td>
+                                    <td><?= nl2br($item['solusi']); ?></span></td>
                                     <td class="text-center">
                                         <div class="btn-group" role="group" aria-label="Opsi">
                                             <a href="#" class="btn btn-sm btn-primary shadow-sm" data-toggle="modal" data-target="#edit_penyakit<?= $item['id_penyakit'] ?>" data-toggle="tooltip" data-placement="right" title="Edit penyakit"><i class="fa fa-fw fa-edit"></i></a>

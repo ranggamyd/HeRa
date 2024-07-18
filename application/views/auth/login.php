@@ -14,10 +14,11 @@ $this->load->view('_partials/header');
                         </div>
 
                         <div class="card card-primary">
-                            <div class="card-header">
-                                <h4>Masuk untuk melanjutkan!</h4>
+                            <div class="card-header flex-column">
+                                <h4>LOGIN !</h4>
+                                <h6 class="text-center">Sistem Pakar Diagnosa Penyakit Kelinci</h6>
                             </div>
-
+                            
                             <div class="card-body">
                                 <form action="<?= base_url('auth/login') ?>" method="POST">
                                     <div class="form-group">

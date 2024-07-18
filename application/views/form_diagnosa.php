@@ -71,6 +71,9 @@
               </ul>
             </li>
             <li><a class="nav-link scrollto" href="#contact">Contact</a></li> -->
+            <li><a class="nav-link scrollto" href="<?= base_url() ?>home">Home</a></li>
+            <li><a class="nav-link scrollto" href="<?= base_url() ?>home/diagnosa">Diagnosa</a></li>
+            <li><a class="nav-link scrollto" href="<?= base_url() ?>home/tentang">Tentang</a></li>
           <li>
             <a class="getstarted" href="<?= base_url() ?>auth/login"><i class="bi bi-box-arrow-in-right me-2"></i> Login</a>
           </li>

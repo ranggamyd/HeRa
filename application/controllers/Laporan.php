@@ -91,7 +91,7 @@ class Laporan extends CI_Controller
         $data['arpkt'] = $this->laporan_model->getPenyakit();
         $data['arspkt'] = $this->laporan_model->getPenyakit2();
 
-        $this->load->view('_partials/header_print');
+        $data['title']='Cetak Laporan';
         $this->load->view('admin/riwayat/detail_cetak', $data);
     }
 }

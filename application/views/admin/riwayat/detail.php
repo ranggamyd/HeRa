@@ -1,7 +1,20 @@
-<div class="container-fluid">
+<?php
+defined('BASEPATH') or exit('No direct script access allowed');
+$this->load->view('_partials/header');
+?>
+
+<div class="main-content">
+    <section class="section">
+        <div class="section-header">
+            <h1><?= $title ?></h1>
+        </div>
+
+        <div class="container-fluid">
     <!-- Page Heading -->
-    <h1 class="h1 text-center mb-0 text-gray-800">Laporan Hasil Diagnosa</h1>
-    <hr>
+    <div class="d-sm-flex align-items-center justify-content-between mb-4">
+        <h1 class="h3 mb-0 text-gray-800">Laporan Hasil Diagnosa</h1>
+        <a target="_blank" href="<?= base_url('laporan/cetak_detail/' . $id) ?>" id="print" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm" data-toggle="tooltip" data-placement="right" title="Klik tombol ini untuk mencetak hasil diagnosa"><i class="fas fa-print fa-sm text-white-50"></i> Print</a>
+    </div>
     <div class="row">
         <div class="col-6">
             <div class="card shadow-sm mb-3">
@@ -14,6 +27,10 @@
                             <th>Nama:</th>
                             <td><?= $pasien['nama'] ?></td>
                         </tr>
+                        <!-- <tr>
+                            <th>Jenis Kelamin:</th>
+                            <td><?= $pasien['jenis_kelamin'] ?></td>
+                        </tr> -->
                         <tr>
                             <th>Umur:</th>
                             <td><?= $pasien['umur'] ?></td>
@@ -38,7 +55,7 @@
         <div class="col-6">
             <div class="card shadow-sm mb-3">
                 <div class="card-header">
-                    <h4 class="mb-0 text-gray-800">Gejala yang di alami pengguna</h4>
+                    <h4 class="mb-0 text-gray-800">Gejala yang di alami pasien</h4>
                 </div>
                 <div class="card-body">
                     <table class="table table-bordered table-striped diagnosa">
@@ -98,7 +115,7 @@
                     foreach ($arpenyakit as $key => $value) {
                         $idpkt1[1] = $key;
                     ?>
-                        <h4><?php echo $arspkt[$idpkt1[1]]; ?></h4>
+                        <h4><?php echo nl2br($arspkt[$idpkt1[1]]); ?></h4>
 
                     <?php if ($key++ > 1) break;
                     } ?>
@@ -138,9 +155,8 @@
             </div>
         </div>
     </div>
-
+</div>
+    </section>
 </div>
 
-<script type="text/javascript">
-    window.print();
-</script>
+<?php $this->load->view('_partials/footer'); ?>

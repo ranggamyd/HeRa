@@ -27,7 +27,7 @@
 
 <body>
     <!-- ======= Header ======= -->
-    <header id="header" class="fixed-top header-transparent">
+    <header id="header" class="fixed-top header-transparent d-print-none">
         <div class="container d-flex align-items-center justify-content-between">
             <div class="logo">
                 <!-- <h1><a href="/">Appland</a></h1> -->
@@ -71,6 +71,9 @@
               </ul>
             </li>
             <li><a class="nav-link scrollto" href="#contact">Contact</a></li> -->
+            <li><a class="nav-link scrollto" href="<?= base_url() ?>home">Home</a></li>
+            <li><a class="nav-link scrollto" href="<?= base_url() ?>home/diagnosa">Diagnosa</a></li>
+            <li><a class="nav-link scrollto" href="<?= base_url() ?>home/tentang">Tentang</a></li>
                     <li>
                         <a class="getstarted" href="<?= base_url() ?>auth/login"><i class="bi bi-box-arrow-in-right me-2"></i> Login</a>
                     </li>
@@ -98,16 +101,14 @@
         <!-- End Breadcrumbs Section -->
 
         <!-- ======= Contact Section ======= -->
-        <section class="contact">
+        <section class="contact" id="print-area">
             <div class="container" data-aos="fade-up">
-                <div class="section-title">
+                <div class="section-title d-print-none">
                     <div class="d-sm-flex align-items-center justify-content-between mb-4">
                         <h2>Hasil Diagnosa</h2>
                         <a href="#" id="print" onClick="window.print();" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm" data-toggle="tooltip" data-placement="right" title="Klik tombol ini untuk mencetak hasil diagnosa"><i class="fas fa-print fa-sm text-white-50"></i> Print</a>
                     </div>
                 </div>
-
-
 
                 <div class="row">
                     <div class="col-6">
@@ -254,7 +255,7 @@
                                 foreach ($arpenyakit as $key => $value) {
                                     $idpkt1[1] = $key;
                                 ?>
-                                    <h4><?php echo $arspkt[$idpkt1[1]]; ?></h4>
+                                    <h4><?php echo nl2br($arspkt[$idpkt1[1]]); ?></h4>
 
                                 <?php if ($key++ > 1) break;
                                 } ?>
@@ -291,6 +292,13 @@
                                 } ?>
                             </div>
                         </div>
+                    </div>
+                </div>
+
+                <div class="row d-print-none">
+                    <div class="col d-flex justify-content-center gap-3">
+                        <a href="<?= base_url() ?>home" class="btn btn-success"><i class="bi bi-house" style="font-size: 1rem;""></i> Halaman Utama</a>
+                        <a href="<?= base_url() ?>home/diagnosa" class="btn btn-secondary"><i class="bi bi-arrow-repeat" style="font-size: 1rem;""></i> Diagnosa Ulang</a>
                     </div>
                 </div>
             </div>

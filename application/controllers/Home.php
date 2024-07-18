@@ -8,6 +8,11 @@ class Home extends CI_Controller
     {
         $this->load->view('index');
     }
+    
+    public function tentang()
+    {
+        $this->load->view('tentang');
+    }
 
     public function diagnosa()
     {

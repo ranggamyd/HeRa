@@ -84,34 +84,47 @@
   </header>
   <!-- End Header -->
 
-  <!-- ======= Hero Section ======= -->
-  <section id="hero" class="d-flex align-items-center">
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-7 d-lg-flex flex-lg-column justify-content-center align-items-stretch pt-5 pt-lg-0 order-2 order-lg-1" data-aos="fade-up">
-          <div>
-            <h1>
-              Selamat datang di solusi cerdas untuk kesehatan kelinci Anda!
-            </h1>
-            <h2>
-              <strong>HeRa (Healthy Rabbit App)</strong> <br />HeRa
-              menggunakan metode AHP (Analytic Hierarchy Process) dan CF
-              (Certainty Factor) untuk membantu Anda mendiagnosa penyakit
-              kelinci kesayangan Anda dengan tepat. Jaga kesehatan kelinci
-              Anda dengan teknologi terbaru!
-            </h2>
-            <a href="<?= base_url() ?>home/diagnosa" class="download-btn"><i class="bi bi-play-circle-fill" style="font-size: 1rem;""></i> Mulai Diagnosa</a
-              >
-            </div>
+  <main id="main">
+    <!-- ======= Breadcrumbs Section ======= -->
+    <section class="breadcrumbs">
+      <div class="container">
+        <div class="d-flex justify-content-between align-items-center">
+          <h2>Tentang</h2>
+          <ol>
+            <li><a href="<?= base_url() ?>">Home</a></li>
+            <li>Tentang</li>
+          </ol>
+        </div>
+      </div>
+    </section>
+    <!-- End Breadcrumbs Section -->
+
+    <!-- ======= Details Section ======= -->
+    <section id="details" class="details">
+      <div class="container" data-aos="fade-up">
+        <div class="row content">
+          <div class="col-md-4" data-aos="fade-right">
+            <img src="<?= base_url() ?>assets/fe/assets/img/hero-img.png" class="img-fluid" alt="">
           </div>
-          <div
-            class=" col-lg-5 d-lg-flex flex-lg-column align-items-stretch order-1 order-lg-2 hero-img" data-aos="fade-up">
-                <img src="<?= base_url() ?>assets/fe/assets/img/hero-img.png" style="width: 500px; object-fit: cover" class="img-fluid" alt="" />
+          <div class="col-md-8 pt-4" data-aos="fade-up">
+            <h3>Kelinci Anda tidak bisa berbicara, tetapi aplikasi ini bisa!</h3>
+            <p class="fst-italic">
+              Dengan teknologi canggih, aplikasi ini memberikan solusi terbaik untuk mendiagnosa penyakit pada kelinci.
+            </p>
+            <ul>
+              <li><i class="bi bi-check"></i> Memudahkan pengguna dalam mengidentifikasi gejala penyakit.</li>
+              <li><i class="bi bi-check"></i> Menggunakan metode AHP dan CF untuk hasil yang akurat.</li>
+              <li><i class="bi bi-check"></i> Memberikan rekomendasi perawatan yang tepat.</li>
+              <li><i class="bi bi-check"></i> User-friendly dan mudah digunakan oleh siapa saja.</li>
+            </ul>
+            <p>
+              Aplikasi ini dirancang untuk membantu pemilik kelinci memahami kesehatan hewan peliharaan mereka dengan lebih baik. Dengan pendekatan yang inovatif, kami berkomitmen untuk memberikan informasi yang bermanfaat dan akurat.
+            </p>
           </div>
         </div>
       </div>
-  </section>
-  <!-- End Hero -->
+    </section><!-- End Details Section -->
+  </main>
 
   <!-- ======= Footer ======= -->
   <footer id="footer">

@@ -37,7 +37,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
 </head>
 
 <?php
-if ($this->uri->segment(1) != "auth") {
+if ($this->uri->segment(1) != "auth" && $this->uri->segment(2) != "cetak_detail") {
   $this->load->view('_partials/layout');
   $this->load->view('_partials/sidebar');
 }
