@@ -181,6 +181,7 @@ CREATE TABLE `pasien` (
 CREATE TABLE `penyakit` (
   `id_penyakit` int(11) NOT NULL,
   `kode_penyakit` varchar(10) NOT NULL,
+  `deskripsi` text NOT NULL,
   `nama_penyakit` varchar(100) NOT NULL,
   `solusi` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
