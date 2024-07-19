@@ -66,6 +66,8 @@ $this->load->view('_partials/header');
                         <input type="text" class="form-control mb-3" id="kode_penyakit" name="kode_penyakit" value="<?= $kode_penyakit_auto ?>" readonly required>
                         <label for="nama_penyakit">Nama penyakit :</label>
                         <input type="text" class="form-control mb-3" id="nama_penyakit" name="nama_penyakit" required>
+                        <label for="deskripsi">Deskripsi :</label>
+                        <textarea name="deskripsi" id="deskripsi" cols="12" rows="5" class="form-control"></textarea>
                         <label for="solusi">Solusi :</label>
                         <textarea name="solusi" id="solusi" cols="12" rows="5" class="form-control"></textarea>
                 </div>
@@ -97,6 +99,8 @@ $this->load->view('_partials/header');
                             <input type="text" class="form-control mb-3" id="kode_penyakit" name="kode_penyakit" value="<?= $item['kode_penyakit'] ?>" required readonly>
                             <label for="nama_penyakit">Nama penyakit :</label>
                             <input type="text" class="form-control mb-3" id="nama_penyakit" name="nama_penyakit" value="<?= $item['nama_penyakit'] ?>" required>
+                            <label for="deskripsi">Deskripsi :</label>
+                            <textarea name="deskripsi" id="deskripsi" cols="12" rows="5" class="form-control"><?= $item['deskripsi'] ?></textarea>
                             <label for="solusi">Solusi :</label>
                             <textarea name="solusi" id="solusi" cols="12" rows="5" class="form-control"><?= $item['solusi'] ?></textarea>
                     </div>

@@ -26,11 +26,13 @@ class Penyakit extends CI_Controller
     {
         $kode_penyakit  = $this->input->post('kode_penyakit');
         $nama_penyakit  = $this->input->post('nama_penyakit');
+        $deskripsi         = $this->input->post('deskripsi');
         $solusi         = $this->input->post('solusi');
 
         $data = [
             'kode_penyakit' => $kode_penyakit,
             'nama_penyakit' => $nama_penyakit,
+            'deskripsi'        => $deskripsi,
             'solusi'        => $solusi,
         ];
 
@@ -42,11 +44,13 @@ class Penyakit extends CI_Controller
         $id_penyakit         = $this->input->post('id_penyakit');
         $kode_penyakit       = $this->input->post('kode_penyakit');
         $nama_penyakit       = $this->input->post('nama_penyakit');
+        $deskripsi         = $this->input->post('deskripsi');
         $solusi         = $this->input->post('solusi');
 
         $data = [
             'kode_penyakit' => $kode_penyakit,
             'nama_penyakit' => $nama_penyakit,
+            'deskripsi'        => $deskripsi,
             'solusi'        => $solusi,
         ];
 
