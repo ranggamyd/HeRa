@@ -40,6 +40,10 @@ $this->load->view('_partials/header');
                             <td><?= $pasien['no_hp'] ?></td>
                         </tr>
                         <tr>
+                            <th>Nama Kelinci:</th>
+                            <td><?= $pasien['nama_kelinci'] ?></td>
+                        </tr>
+                        <tr>
                             <th>Alamat:</th>
                             <td><?= $pasien['alamat'] ?></td>
                         </tr>

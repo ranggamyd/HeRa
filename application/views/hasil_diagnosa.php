@@ -132,6 +132,10 @@
                                             <td><?= $item['no_hp'] ?></td>
                                         </tr>
                                         <tr>
+                                            <th>Nama Kelinci:</th>
+                                            <td><?= $item['nama_kelinci'] ?></td>
+                                        </tr>
+                                        <tr>
                                             <th>Alamat:</th>
                                             <td><?= $item['alamat'] ?></td>
                                         </tr>

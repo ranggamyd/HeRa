@@ -126,14 +126,22 @@
                                                                                                                     date_default_timezone_set('Asia/Jakarta');
                                                                                                                     echo date('Y-m-d H:i:s');
                                                                                                                     ?>">
-                  <label for="nama">Nama Lengkap :</label>
-                  <input type="text" class="form-control main-form mb-3" id="nama" name="nama" required>
-                  <label for="no_hp">No. HP :</label>
-                  <input type="text" class="form-control main-form mb-3" id="no_hp" name="no_hp" required>
-                  <label for="umur">Umur :</label>
-                  <input type="text" class="form-control main-form mb-3" id="umur" name="umur" required>
-                  <label for="alamat">Alamat :</label>
-                  <textarea name="alamat" id="alamat" cols="10" rows="5" class="form-control main-form"></textarea>
+                  <div class="row">
+                    <div class="col-6">
+                      <label for="nama">Nama Lengkap :</label>
+                      <input type="text" class="form-control main-form mb-3" id="nama" name="nama" required>
+                      <label for="no_hp">No. HP :</label>
+                      <input type="text" class="form-control main-form mb-3" id="no_hp" name="no_hp" required>
+                      <label for="umur">Umur :</label>
+                      <input type="text" class="form-control main-form mb-3" id="umur" name="umur" required>
+                    </div>
+                    <div class="col-6">
+                      <label for="nama_kelinci">Nama Kelinci :</label>
+                      <input type="text" class="form-control main-form mb-3" id="nama_kelinci" name="nama_kelinci" required>
+                      <label for="alamat">Alamat :</label>
+                      <textarea name="alamat" id="alamat" cols="10" rows="4" class="form-control main-form"></textarea>
+                    </div>
+                  </div>
                 </div>
                 <input type="button" name="next" class="next action-button" value="Mulai Diagnosa" />
               </fieldset>

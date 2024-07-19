@@ -19,6 +19,7 @@ $this->load->view('_partials/header');
                         <thead class="text-center">
                             <th>No</th>
                             <th>Pengguna</th>
+                            <th>Nama Kelinci</th>
                             <th>Tgl Diagnosa</th>
                             <th>Penyakit</th>
                             <th>Nilai</th>
@@ -32,6 +33,7 @@ $this->load->view('_partials/header');
                                 <tr>
                                     <td class="text-center"><?= $no++; ?></td>
                                     <td><?= $item['nama']; ?></td>
+                                    <td><?= $item['nama_kelinci']; ?></td>
                                     <td><?= $item['tanggal']; ?></td>
                                     <td><?= $item['nama_penyakit']; ?></td>
                                     <td class="text-center">
