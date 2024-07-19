@@ -6,12 +6,12 @@ defined('BASEPATH') or exit('No direct script access allowed');
   <aside id="sidebar-wrapper">
     <div class="sidebar-brand">
       <a href="<?= base_url(); ?>dashboard">
-        <img src="<?= base_url(); ?>assets/fe/assets/img/logo_light.png" style="height: 40px; object-fit: cover;" alt="">
+        <img src="<?= base_url(); ?>assets/fe/assets/img/logo.png" style="height: 40px; object-fit: cover;" alt="">
       </a>
     </div>
     <div class="sidebar-brand sidebar-brand-sm">
       <a href="<?= base_url(); ?>dashboard">
-        <img src="<?= base_url(); ?>assets/fe/assets/img/logo_only_light.png" style="height: 40px; object-fit: cover;" alt="">
+        <img src="<?= base_url(); ?>assets/fe/assets/img/logo_only.png" style="height: 40px; object-fit: cover;" alt="">
       </a>
     </div>
     <ul class="sidebar-menu mt-3">

@@ -10,7 +10,7 @@ p {
 }
 #heading {
 	text-transform: uppercase;
-	color: #2e7eed;
+	color: #e68bbe;
 	font-weight: normal;
 }
 #msform {
@@ -57,12 +57,12 @@ p {
 	-moz-box-shadow: none !important;
 	-webkit-box-shadow: none !important;
 	box-shadow: none !important;
-	border: 1px solid #2e7eed;
+	border: 1px solid #e68bbe;
 	outline-width: 0;
 }
 #msform .action-button {
 	width: 150px;
-	background: #2e7eed;
+	background: #e68bbe;
 	font-weight: bold;
 	color: white;
 	border: 0 none;
@@ -78,7 +78,7 @@ p {
 }
 #msform .action-button-finish {
 	width: 150px;
-	background: #2e7eed;
+	background: #e68bbe;
 	font-weight: bold;
 	color: white;
 	border: 0 none;
@@ -116,13 +116,13 @@ p {
 }
 .fs-title {
 	font-size: 25px;
-	color: #2e7eed;
+	color: #e68bbe;
 	margin-bottom: 15px;
 	font-weight: normal;
 	text-align: left;
 }
 .purple-text {
-	color: #2e7eed;
+	color: #e68bbe;
 	font-weight: normal;
 }
 .steps {
@@ -142,7 +142,7 @@ p {
 	color: lightgrey;
 }
 #progressbar .active {
-	color: #2e7eed;
+	color: #e68bbe;
 }
 #progressbar li {
 	list-style-type: none;
@@ -192,13 +192,13 @@ p {
 }
 #progressbar li.active:before,
 #progressbar li.active:after {
-	background: #2e7eed;
+	background: #e68bbe;
 }
 .progress {
 	height: 20px;
 }
 .progress-bar {
-	background-color: #2e7eed;
+	background-color: #e68bbe;
 }
 .fit-image {
 	width: 100%;

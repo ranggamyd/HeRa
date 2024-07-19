@@ -283,7 +283,7 @@ $this->load->view('_partials/header');
                                         <?php endforeach; ?>
                                         <table class="table" style="margin : 40px 0 10px 0;">
                                             <tr>
-                                                <td colspan="4"><input type="submit" class="btn btn-fill btn-info" name="" value="Simpan Ke Database" id="<?= $id_penyakit ?>" name="<?= $id_penyakit ?>"> </td>
+                                                <td colspan="4"><input type="submit" class="btn btn-fill btn-primary" name="" value="Simpan Ke Database" id="<?= $id_penyakit ?>" name="<?= $id_penyakit ?>"> </td>
                                             </tr>
                                         </table>
                                     </tbody>

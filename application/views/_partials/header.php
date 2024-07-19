@@ -10,7 +10,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no" name="viewport">
   <title><?= $title; ?> &mdash; HeRa</title>
 
-  <link rel="shortcut icon" href="<?= base_url() ?>assets/fe/assets/img/logo_only_dark.png" type="image/x-icon">
+  <link rel="shortcut icon" href="<?= base_url() ?>assets/fe/assets/img/logo_only.png" type="image/x-icon">
 
   <script src="<?= base_url() ?>assets/modules/jquery.min.js"></script>
   <script type="text/javascript">

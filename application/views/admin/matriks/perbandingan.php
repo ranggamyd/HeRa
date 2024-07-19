@@ -138,7 +138,7 @@ $this->load->view('_partials/header');
                                         endforeach;
                                     } ?>
                                     <tr>
-                                        <td colspan="4"><input value="Kalkulasi" type="submit" class="btn btn-fill btn-info" id="<?= $id_penyakit ?>" name="<?= $id_penyakit ?>"></td>
+                                        <td colspan="4"><input value="Kalkulasi" type="submit" class="btn btn-fill btn-primary" id="<?= $id_penyakit ?>" name="<?= $id_penyakit ?>"></td>
                                     </tr>
                                 </tbody>
                             </table>
