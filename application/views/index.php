@@ -31,7 +31,7 @@
       <div class="logo">
         <!-- <h1><a href="/">Appland</a></h1> -->
         <!-- Uncomment below if you prefer to use an image logo -->
-        <a href="/">
+        <a href="<?= base_url() ?>">
           <img src="<?= base_url() ?>assets/fe/assets/img/logo.png" class="img-fluid" style="width: 150px; height: 150px; object-fit: cover" />
         </a>
       </div>
