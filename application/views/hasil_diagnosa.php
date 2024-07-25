@@ -71,9 +71,9 @@
               </ul>
             </li>
             <li><a class="nav-link scrollto" href="#contact">Contact</a></li> -->
-            <li><a class="nav-link scrollto" href="<?= base_url() ?>home">Home</a></li>
-            <li><a class="nav-link scrollto" href="<?= base_url() ?>home/diagnosa">Diagnosa</a></li>
-            <li><a class="nav-link scrollto" href="<?= base_url() ?>home/tentang">Tentang</a></li>
+                    <li><a class="nav-link scrollto" href="<?= base_url() ?>home">Home</a></li>
+                    <li><a class="nav-link scrollto" href="<?= base_url() ?>home/diagnosa">Diagnosa</a></li>
+                    <li><a class="nav-link scrollto" href="<?= base_url() ?>home/tentang">Tentang</a></li>
                     <li>
                         <a class="getstarted" href="<?= base_url() ?>auth/login"><i class="bi bi-box-arrow-in-right me-2"></i> Login</a>
                     </li>
@@ -241,6 +241,7 @@
                                     ?>
 
                             </b> / <?php echo $vlpkt1[1] * 100; ?> % (<?php echo round($vlpkt1[1], 3); ?>)<br></h4>
+                            <h5><?= nl2br($this->db->get_where('penyakit', ['nama_penyakit' => $arpkt[$idpkt1[1]]])->row('deskripsi')); ?></h5>
                         <?php if ($key++ > 0) break;
                         } ?>
 
@@ -302,7 +303,7 @@
                 <div class="row d-print-none">
                     <div class="col d-flex justify-content-center gap-3">
                         <a href="<?= base_url() ?>home" class="btn btn-success"><i class="bi bi-house" style="font-size: 1rem;""></i> Halaman Utama</a>
-                        <a href="<?= base_url() ?>home/diagnosa" class="btn btn-secondary"><i class="bi bi-arrow-repeat" style="font-size: 1rem;""></i> Diagnosa Ulang</a>
+                        <a href=" <?= base_url() ?>home/diagnosa" class="btn btn-secondary"><i class="bi bi-arrow-repeat" style="font-size: 1rem;""></i> Diagnosa Ulang</a>
                     </div>
                 </div>
             </div>
@@ -312,26 +313,26 @@
     <!-- End #main -->
 
     <!-- ======= Footer ======= -->
-    <footer id="footer">
-        <div class="container py-4">
-            <div class="copyright">
-                &copy; Copyright <strong><span>HeRa</span></strong>. All Rights Reserved
-            </div>
-            <!-- <div class="credits">
+    <footer id=" footer">
+                                    <div class="container py-4">
+                                        <div class="copyright">
+                                            &copy; Copyright <strong><span>HeRa</span></strong>. All Rights Reserved
+                                        </div>
+                                        <!-- <div class="credits">
           Designed by <a href="#">ShiPut</a>
         </div> -->
-        </div>
-    </footer>
-    <!-- End Footer -->
+                                    </div>
+                                    </footer>
+                                    <!-- End Footer -->
 
-    <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+                                    <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
 
-    <!-- Vendor JS Files -->
-    <script src="<?= base_url() ?>assets/fe/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-    <script src="<?= base_url() ?>assets/fe/assets/vendor/aos/aos.js"></script>
-    <script src="<?= base_url() ?>assets/fe/assets/vendor/jquery/jquery.min.js"></script>
-    <script src="<?= base_url() ?>assets/fe/assets/vendor/wizard/wizard.js"></script>
+                                    <!-- Vendor JS Files -->
+                                    <script src="<?= base_url() ?>assets/fe/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+                                    <script src="<?= base_url() ?>assets/fe/assets/vendor/aos/aos.js"></script>
+                                    <script src="<?= base_url() ?>assets/fe/assets/vendor/jquery/jquery.min.js"></script>
+                                    <script src="<?= base_url() ?>assets/fe/assets/vendor/wizard/wizard.js"></script>
 
-    <!-- Template Main JS File -->
-    <script src="<?= base_url() ?>assets/fe/assets/js/main.js"></script>
+                                    <!-- Template Main JS File -->
+                                    <script src="<?= base_url() ?>assets/fe/assets/js/main.js"></script>
 </body>

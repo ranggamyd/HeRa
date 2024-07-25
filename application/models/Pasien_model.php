@@ -5,23 +5,20 @@ class Pasien_model extends CI_Model
 {
     public function get_id_pasien_baru()
     {
-        $this->db->select('RIGHT(pasien.id_pasien,3) as id_pasien', FALSE);
-        $this->db->order_by('id_pasien', 'DESC');
-        $this->db->limit(1);
-        $query = $this->db->get('pasien');
-        if ($query->num_rows() <> 0) {
-            $data = $query->row();
-            $kd = intval($data->id_pasien) + 1;
+        $latest = $this->db->order_by('id_pasien', 'DESC')->get('pasien')->row();
+
+        if ($latest) {
+            return $latest->id_pasien + 1;
         } else {
-            $kd = 1;
+            return 1;
         }
-        return $kd;
     }
 
     public function get_pasien()
     {
         return $this->db->get('pasien')->result_array();
     }
+
     public function tambah($data)
     {
         if ($this->db->insert('pasien', $data)) {

@@ -28,7 +28,7 @@ $this->load->view('_partials/header');
 
                 <div class="collapse show" id="penyakit">
                     <div class="card-body">
-                        <form action="<?php echo base_url('matriks/analisa/') . $id_penyakit; ?>" method="post">
+                        <form action="<?= base_url('matriks/analisa/') . $id_penyakit; ?>" method="post">
                             <input type="hidden" value="<?= $id_penyakit ?>" name="id_penyakit">
                             <table class="table table-hover table-striped">
                                 <thead>
@@ -53,7 +53,6 @@ $this->load->view('_partials/header');
 
                                     $result = $query->result_array();
 
-                                    // var_dump($result);
                                     foreach ($result as $key) { //foreach ambil dari tabel atas (ngambil array terakhir)
 
                                         $query = $this->db->select('rule.id_gejala')
@@ -87,17 +86,22 @@ $this->load->view('_partials/header');
                                                 foreach ($result as $bc) {
                                                     if ($i == $ra) { ?>
                                                         <tr hidden>
-                                                            <td><input type="hidden" name="C[<?php echo $ra . $jid; ?>]" value="<?php echo $ra; ?>"><?php echo $rl['kode_gejala']; ?></td>
-                                                            <td><input type="hidden" name="W[<?php echo $ra . $jid; ?>]" value="1"> </td>
-                                                            <td><input type="hidden" id="" name="X[<?php echo $ra . $jid; ?>]" value="<?php echo $jo; ?>"><?php echo $bc['kode_gejala']; ?></td>
+                                                            <td><input type="hidden" name="C[<?= $ra . $jid; ?>]" value="<?= $ra; ?>"><?= $rl['kode_gejala']; ?></td>
+                                                            <td><input type="hidden" name="W[<?= $ra . $jid; ?>]" value="1"> </td>
+                                                            <td><input type="hidden" id="" name="X[<?= $ra . $jid; ?>]" value="<?= $jo; ?>"><?= $bc['kode_gejala']; ?></td>
 
-                                                            <td><input type="hidden" name="" value="<?php echo $ra . $jid; ?>"></td>
+                                                            <td><input type="hidden" name="" value="<?= $ra . $jid; ?>"></td>
                                                         </tr>
                                                     <?php
-                                                    } else if ($ra < $i) { ?>
+                                                    } else if ($ra < $i) {
+                                                        // echo "<pre>";
+                                                        // print_r($ra);
+                                                        // print_r($i);
+                                                        // echo "</pre>"; 
+                                                    ?>
                                                         <tr>
-                                                            <td style="font-size:15px;"><input type="hidden" name="C[<?php echo $ra . $jid; ?>]" value="<?php echo $ra; ?>" hidden><?php echo $rl['kode_gejala']; ?> - <?php echo $rl['nama_gejala']; ?></td>
-                                                            <td><select required class="calculate form-control" id="W<?php echo $ra . $jid; ?>" class="" name="W[<?php echo $ra . $jid; ?>]">
+                                                            <td style="font-size:15px;"><input type="hidden" name="C[<?= $ra . $jid; ?>]" value="<?= $ra; ?>" hidden><?= $rl['kode_gejala']; ?> - <?= $rl['nama_gejala']; ?></td>
+                                                            <td><select required class="calculate form-control" id="W<?= $ra . $jid; ?>" class="" name="W[<?= $ra . $jid; ?>]">
                                                                     <option value="">--PILIH SKALA PERBANDINGAN--</option>
                                                                     <?php
                                                                     $this->db->order_by('id_nilai', 'DESC');
@@ -105,19 +109,22 @@ $this->load->view('_partials/header');
                                                                     $query = $this->db->get();
                                                                     $nilt = $query->result();
                                                                     foreach ($nilt as $keyval) { ?>
-                                                                        <option value="<?php echo $keyval->jum_nilai; ?>"><?php echo $keyval->jum_nilai; ?> - <?php echo $keyval->ket_nilai; ?></option>
+                                                                        <?php
+                                                                        $selected = $this->db->get_where('analisa_krit', ['kriteria_x' => $ra, 'kriteria_y' => $i])->row('nilai_krit');
+                                                                        ?>
+                                                                        <option value="<?= $keyval->jum_nilai; ?>" <?= ($selected && ($keyval->jum_nilai == $selected)) ? 'selected' : ''; ?>><?= $keyval->jum_nilai; ?> - <?= $keyval->ket_nilai; ?></option>
                                                                     <?php } ?>
                                                                 </select></td>
-                                                            <td style="font-size:15px;"><input type="hidden" id="" name="X[<?php echo $ra . $jid; ?>]" value="<?php echo $jo; ?>" hidden><?php echo $bc['kode_gejala']; ?> - <?php echo $bc['nama_gejala']; ?></td>
+                                                            <td style="font-size:15px;"><input type="hidden" id="" name="X[<?= $ra . $jid; ?>]" value="<?= $jo; ?>" hidden><?= $bc['kode_gejala']; ?> - <?= $bc['nama_gejala']; ?></td>
 
-                                                            <td><input type="hidden" id="<?php echo $ra . $jid; ?>" name="" value="<?php echo $ra . $jid; ?>" hidden></td>
+                                                            <td><input type="hidden" id="<?= $ra . $jid; ?>" name="" value="<?= $ra . $jid; ?>" hidden></td>
                                                             <script type="text/javascript">
                                                                 $(document).ready(function() {
                                                                     $('.calculate').bind("change", function(e) {
-                                                                        var st = parseFloat($('#W<?php echo $ra . $jid; ?>').val()) || 0;
+                                                                        var st = parseFloat($('#W<?= $ra . $jid; ?>').val()) || 0;
                                                                         var value = 1 / st;
                                                                         if (!isNaN(value) && value !== Infinity) {
-                                                                            $('#W<?php echo $jid . $ra; ?>').val(value);
+                                                                            $('#W<?= $jid . $ra; ?>').val(value);
                                                                         }
                                                                     });
                                                                 });
@@ -127,10 +134,10 @@ $this->load->view('_partials/header');
                                                     } else {
                                                     ?>
                                                         <tr hidden>
-                                                            <td><input type="hidden" name="C[<?php echo $ra . $jid; ?>]" value="<?php echo $ra; ?>"></td>
-                                                            <td><input id="W<?php echo $ra . $jid; ?>" name="W[<?php echo $ra . $jid; ?>]" type="hidden" value=""> </td>
-                                                            <td><input type="hidden" name="X[<?php echo $ra . $jid; ?>]" value="<?php echo $jid; ?>"></td>
-                                                            <td><input type="hidden" name="" value="<?php echo $ra . $jid; ?>"></td>
+                                                            <td><input type="hidden" name="C[<?= $ra . $jid; ?>]" value="<?= $ra; ?>"></td>
+                                                            <td><input id="W<?= $ra . $jid; ?>" name="W[<?= $ra . $jid; ?>]" type="hidden" value=""> </td>
+                                                            <td><input type="hidden" name="X[<?= $ra . $jid; ?>]" value="<?= $jid; ?>"></td>
+                                                            <td><input type="hidden" name="" value="<?= $ra . $jid; ?>"></td>
                                                         </tr>
                                     <?php }
                                                 }
@@ -182,7 +189,7 @@ $this->load->view('_partials/header');
                                                 <th>Kriteria</th>
                                                 <?php
                                                 foreach ($listKrit as $kr) { ?>
-                                                    <th><?php echo $kr->kode_gejala; ?></th>
+                                                    <th><?= $kr->kode_gejala; ?></th>
                                                 <?php } ?>
                                             </tr>
                                         </thead>
@@ -197,14 +204,14 @@ $this->load->view('_partials/header');
                                                     $query = $this->db->get();
                                                     $anK = $query->result();
                                                     ?>
-                                                    <td><b><?php echo $bc->kode_gejala; ?></b></td>
+                                                    <td><b><?= $bc->kode_gejala; ?></b></td>
                                                     <?php foreach ($anK as $at) :
                                                         // $pt = explode("C",$at->kriteria_x);
                                                         // $ps = explode("C",$at->kriteria_y);
                                                         $re = $at->kriteria_y;
                                                         $rf = $at->kriteria_x;
                                                     ?>
-                                                        <td class="calculate<?php echo $re; ?>" id="R<?php echo $re . $rf; ?>"><?php echo $at->nilai_krit; ?></td>
+                                                        <td class="calculate<?= $re; ?>" id="R<?= $re . $rf; ?>"><?= $at->nilai_krit; ?></td>
                                                     <?php endforeach; ?>
                                                 </tr>
                                             <?php endforeach; ?>
@@ -215,18 +222,18 @@ $this->load->view('_partials/header');
                                                     $pt = explode("C", $tt->id_gejala);
                                                     $re = $tt->id_gejala;
                                                 ?>
-                                                    <td class="bg-info text-white" id="sumR<?php echo $re; ?>"></td>
+                                                    <td class="bg-info text-white" id="sumR<?= $re; ?>"></td>
                                                     <script type="text/javascript">
                                                         $(document).ready(function() {
                                                             var sumR = 0;
-                                                            $('.calculate<?php echo $re; ?>').each(function(e) {
+                                                            $('.calculate<?= $re; ?>').each(function(e) {
                                                                 sumR += parseFloat($(this).text());
                                                             });
                                                             var sumRText = sumR.toFixed(5);
                                                             if (parseFloat(sumRText) == Math.floor(sumR)) {
-                                                                $('#sumR<?php echo $re; ?>').html(Math.floor(sumR));
+                                                                $('#sumR<?= $re; ?>').html(Math.floor(sumR));
                                                             } else {
-                                                                $('#sumR<?php echo $re; ?>').html(sumRText);
+                                                                $('#sumR<?= $re; ?>').html(sumRText);
                                                             }
                                                         });
                                                     </script>
@@ -251,7 +258,7 @@ $this->load->view('_partials/header');
                                                 <th>Kriteria</th>
                                                 <?php
                                                 foreach ($listKrit as $kr) { ?>
-                                                    <th><?php echo $kr->kode_gejala; ?></th>
+                                                    <th><?= $kr->kode_gejala; ?></th>
                                                 <?php } ?>
                                                 <th class="bg-info text-white">Jumlah</th>
                                                 <th class="bg-success text-white">Prioritas</th>
@@ -270,36 +277,36 @@ $this->load->view('_partials/header');
                                                     $query = $this->db->get();
                                                     $anK = $query->result();
                                                     ?>
-                                                    <td><b><?php echo $bc->kode_gejala; ?></b></td>
+                                                    <td><b><?= $bc->kode_gejala; ?></b></td>
                                                     <?php foreach ($anK as $at) :
                                                         // $pt = explode("C",$at->kriteria_x);
                                                         // $ps = explode("C",$at->kriteria_y);
                                                         $re = $at->kriteria_y;
                                                         $rf = $at->kriteria_x;
                                                     ?>
-                                                        <td class="calmul<?php echo $rf; ?>" id="ml<?php echo $re . $rf; ?>"><?php echo $at->nilai_krit; ?></td>
+                                                        <td class="calmul<?= $rf; ?>" id="ml<?= $re . $rf; ?>"><?= $at->nilai_krit; ?></td>
                                                         <script type="text/javascript">
                                                             $(document).ready(function() {
                                                                 var mlty = 0;
-                                                                mlty += parseFloat($('#R<?php echo $re . $rf; ?>').text()) / parseFloat($('#sumR<?php echo $re; ?>').text());
-                                                                $('#ml<?php echo $re . $rf; ?>').html(mlty.toFixed(5));
+                                                                mlty += parseFloat($('#R<?= $re . $rf; ?>').text()) / parseFloat($('#sumR<?= $re; ?>').text());
+                                                                $('#ml<?= $re . $rf; ?>').html(mlty.toFixed(5));
                                                             });
                                                         </script>
                                                     <?php endforeach; ?>
                                                     <script type="text/javascript">
                                                         $(document).ready(function() {
                                                             var sumAX = 0;
-                                                            $('.calmul<?php echo $rx; ?>').each(function(e) {
+                                                            $('.calmul<?= $rx; ?>').each(function(e) {
                                                                 sumAX += parseFloat($(this).text());
                                                             });
-                                                            $('#to<?php echo $rx; ?>').html(sumAX.toFixed(5));
-                                                            avgAX = parseFloat($('#to<?php echo $rx; ?>').text()) / <?php echo sizeof($listKrit); ?>;
-                                                            $('#tav<?php echo $rx; ?>').html(avgAX.toFixed(5));
-                                                            $('#trap<?php echo $rx; ?>').html(avgAX.toFixed(5));
+                                                            $('#to<?= $rx; ?>').html(sumAX.toFixed(5));
+                                                            avgAX = parseFloat($('#to<?= $rx; ?>').text()) / <?= sizeof($listKrit); ?>;
+                                                            $('#tav<?= $rx; ?>').html(avgAX.toFixed(5));
+                                                            $('#trap<?= $rx; ?>').html(avgAX.toFixed(5));
                                                         });
                                                     </script>
-                                                    <td class="bg-info text-white" id="to<?php echo $rx; ?>"></td>
-                                                    <td class="bg-success text-white" id="tav<?php echo $rx; ?>"></td>
+                                                    <td class="bg-info text-white" id="to<?= $rx; ?>"></td>
+                                                    <td class="bg-success text-white" id="tav<?= $rx; ?>"></td>
                                                 </tr>
                                             <?php endforeach; ?>
                                         </tbody>
@@ -321,7 +328,7 @@ $this->load->view('_partials/header');
                                                 <th>Kriteria</th>
                                                 <?php
                                                 foreach ($listKrit as $kr) { ?>
-                                                    <th><?php echo $kr->kode_gejala; ?></th>
+                                                    <th><?= $kr->kode_gejala; ?></th>
                                                 <?php } ?>
                                                 <th class="bg-info text-white">Jumlah</th>
                                             </tr>
@@ -339,34 +346,34 @@ $this->load->view('_partials/header');
                                                     $query = $this->db->get();
                                                     $anK = $query->result();
                                                     ?>
-                                                    <td><b><?php echo $bc->kode_gejala; ?></b></td>
+                                                    <td><b><?= $bc->kode_gejala; ?></b></td>
                                                     <?php foreach ($anK as $at) :
                                                         // $pt = explode("C",$at->kriteria_x);
                                                         // $ps = explode("C",$at->kriteria_y);
                                                         $re = $at->kriteria_y;
                                                         $rf = $at->kriteria_x;
                                                     ?>
-                                                        <td class="mtrx<?php echo $rf; ?>" id="mt<?php echo $re . $rf; ?>"><?php echo $at->nilai_krit; ?></td>
+                                                        <td class="mtrx<?= $rf; ?>" id="mt<?= $re . $rf; ?>"><?= $at->nilai_krit; ?></td>
 
                                                         <script type="text/javascript">
                                                             $(document).ready(function() {
                                                                 var mml = 0;
-                                                                mml += parseFloat($('#R<?php echo $re . $rf; ?>').text()) * parseFloat($('#tav<?php echo $re; ?>').text());
-                                                                $('#mt<?php echo $re . $rf; ?>').html(mml.toFixed(5));
+                                                                mml += parseFloat($('#R<?= $re . $rf; ?>').text()) * parseFloat($('#tav<?= $re; ?>').text());
+                                                                $('#mt<?= $re . $rf; ?>').html(mml.toFixed(5));
                                                             });
                                                         </script>
                                                     <?php endforeach; ?>
                                                     <script type="text/javascript">
                                                         $(document).ready(function() {
                                                             var tolMX = 0;
-                                                            $('.mtrx<?php echo $rx; ?>').each(function(e) {
+                                                            $('.mtrx<?= $rx; ?>').each(function(e) {
                                                                 tolMX += parseFloat($(this).text());
                                                             });
-                                                            $('#tpri<?php echo $rx; ?>').html(tolMX.toFixed(5));
-                                                            $('#traj<?php echo $rx; ?>').html(tolMX.toFixed(5));
+                                                            $('#tpri<?= $rx; ?>').html(tolMX.toFixed(5));
+                                                            $('#traj<?= $rx; ?>').html(tolMX.toFixed(5));
                                                         });
                                                     </script>
-                                                    <td class="bg-info text-white" id="tpri<?php echo $rx; ?>"></td>
+                                                    <td class="bg-info text-white" id="tpri<?= $rx; ?>"></td>
                                                 </tr>
                                             <?php endforeach; ?>
                                         </tbody>
@@ -382,7 +389,7 @@ $this->load->view('_partials/header');
                             </div>
                             <div class="card-body">
                                 <div class="table-responsive">
-                                    <form class="" action="<?php echo base_url('matriks/updateNiKr'); ?>" method="post" onsubmit="return check()">
+                                    <form class="" action="<?= base_url('matriks/updateNiKr'); ?>" method="post" onsubmit="return check()">
                                         <table class="table border-1 table-hover table-striped">
                                             <thead>
                                                 <tr>
@@ -398,19 +405,19 @@ $this->load->view('_partials/header');
                                                     $rx = $bc->id_gejala;
                                                 ?>
                                                     <tr>
-                                                        <td style="width: 55%;"><b><?php echo $bc->nama_gejala; ?></b></td>
-                                                        <td class="bg-info text-white col-xs-2" id="traj<?php echo $rx; ?>"></td>
-                                                        <td class="bg-success text-white col-xs-2" id="trap<?php echo $rx; ?>"></td>
+                                                        <td style="width: 55%;"><b><?= $bc->nama_gejala; ?></b></td>
+                                                        <td class="bg-info text-white col-xs-2" id="traj<?= $rx; ?>"></td>
+                                                        <td class="bg-success text-white col-xs-2" id="trap<?= $rx; ?>"></td>
                                                         <script type="text/javascript">
                                                             $(document).ready(function() {
                                                                 var hsl = 0;
-                                                                hsl += parseFloat($('#traj<?php echo $rx; ?>').text()) + parseFloat($('#trap<?php echo $rx; ?>').text());
-                                                                $('#taha<?php echo $rx; ?>').val(hsl.toFixed(5));
-                                                                $('#yo<?php echo $rx; ?>').html(hsl.toFixed(5));
+                                                                hsl += parseFloat($('#traj<?= $rx; ?>').text()) + parseFloat($('#trap<?= $rx; ?>').text());
+                                                                $('#taha<?= $rx; ?>').val(hsl.toFixed(5));
+                                                                $('#yo<?= $rx; ?>').html(hsl.toFixed(5));
                                                             });
                                                         </script>
-                                                        <td hidden><input id="id_gejala" type="hidden" name="id_gejala[<?php echo $rx; ?>]" value="<?php echo $bc->id_gejala; ?>"></td>
-                                                        <!-- <td class="bg-warning text-white col-xs-2"><input readonly class="form-control bg-light" type="hidden" name="hasil[<?php echo $rx; ?>]" id="taha<?php echo $rx; ?>" value=""></td> -->
+                                                        <td hidden><input id="id_gejala" type="hidden" name="id_gejala[<?= $rx; ?>]" value="<?= $bc->id_gejala; ?>"></td>
+                                                        <!-- <td class="bg-warning text-white col-xs-2"><input readonly class="form-control bg-light" type="hidden" name="hasil[<?= $rx; ?>]" id="taha<?= $rx; ?>" value=""></td> -->
                                                     </tr>
                                                 <?php endforeach; ?>
                                                 <!-- <table class="table" style="margin : 40px 0 10px 0;">
