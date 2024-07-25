@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
 
-class Pasien_model extends CI_Model
+class pengguna_model extends CI_Model
 {
     public function get_id_pasien_baru()
     {
@@ -22,10 +22,10 @@ class Pasien_model extends CI_Model
     public function tambah($data)
     {
         if ($this->db->insert('pasien', $data)) {
-            $this->session->set_flashdata('sukses', 'Registrasi Pasien Berhasil !');
+            $this->session->set_flashdata('sukses', 'Registrasi pengguna Berhasil !');
             redirect('pasien');
         } else {
-            $this->session->set_flashdata('gagal', 'Registrasi Pasien Gagal !');
+            $this->session->set_flashdata('gagal', 'Registrasi pengguna Gagal !');
             redirect('pasien/registrasi');
         }
     }
@@ -36,31 +36,32 @@ class Pasien_model extends CI_Model
     public function tambah1($data)
     {
         if ($this->db->insert('pasien', $data)) {
-            $this->session->set_flashdata('sukses', 'Berhasil Tambah Pasien !');
+            $this->session->set_flashdata('sukses', 'Berhasil Tambah pengguna !');
             redirect('pasien');
         } else {
-            $this->session->set_flashdata('gagal', 'Gagal Tambah Pasien !');
+            $this->session->set_flashdata('gagal', 'Gagal Tambah pengguna !');
             redirect('pasien');
         }
     }
     public function edit($data, $id_pasien)
     {
         if ($this->db->update('pasien', $data, ['id_pasien' => $id_pasien])) {
-            $this->session->set_flashdata('sukses', 'Berhasil mengubah data pasien !');
+            $this->session->set_flashdata('sukses', 'Berhasil mengubah data pengguna !');
             redirect('pasien');
         } else {
-            $this->session->set_flashdata('gagal', 'Gagal mengubah data pasien !');
+            $this->session->set_flashdata('gagal', 'Gagal mengubah data pengguna !');
             redirect('pasien');
         }
     }
 
     public function hapus($id_pasien)
     {
+        $this->db->delete('hasil', ['id_pasien' => $id_pasien]);
         if ($this->db->delete('pasien', ['id_pasien' => $id_pasien])) {
-            $this->session->set_flashdata('sukses', 'Berhasil Menghapus Pasien !');
+            $this->session->set_flashdata('sukses', 'Berhasil Menghapus pengguna !');
             redirect('pasien');
         } else {
-            $this->session->set_flashdata('gagal', 'Gagal Menghapus Pasien !');
+            $this->session->set_flashdata('gagal', 'Gagal Menghapus pengguna !');
             redirect('pasien');
         }
     }

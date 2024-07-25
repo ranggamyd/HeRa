@@ -13,6 +13,8 @@ class Laporan_model extends CI_Model
 
     public function hapus($id_hasil)
     {
+        $id_pasien = $this->db->get_where('hasil', ['id_hasil' => $id_hasil])->row('id_pasien');
+        $this->db->delete('pasien', ['id_pasien' => $id_pasien]);
         if ($this->db->delete('hasil', ['id_hasil' => $id_hasil])) {
             $this->session->set_flashdata('sukses', 'Berhasil Menghapus hasil !');
             redirect('laporan');
