@@ -43,6 +43,10 @@ class Matriks extends CI_Controller
 
     public function analisa()
     {
+    //     echo "<pre>";
+    //     print_r($this->input->post());
+    //     echo "</pre>"; 
+    //     die();
         $id_penyakit = $this->input->post('id_penyakit');
         $cleT = $this->matriks_model->clearTB($id_penyakit);
         $crit = $_POST['C'];

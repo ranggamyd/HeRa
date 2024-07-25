@@ -19,6 +19,7 @@ class Home extends CI_Controller
         switch ($this->input->post('submit')) {
             default:
                 if ($this->input->post('submit')) {
+                    $id_pasien      = $this->input->post('id_pasien');
                     $nama       = $this->input->post('nama');
                     $umur       = $this->input->post('umur');
                     $no_hp      = $this->input->post('no_hp');
@@ -26,6 +27,7 @@ class Home extends CI_Controller
                     $alamat     = $this->input->post('alamat');
 
                     $data1 = [
+                        'id_pasien'  => $id_pasien,
                         'nama'  => $nama,
                         'umur'  => $umur,
                         'no_hp' => $no_hp,
