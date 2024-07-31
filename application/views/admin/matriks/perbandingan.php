@@ -104,15 +104,13 @@ $this->load->view('_partials/header');
                                                             <td><select required class="calculate form-control" id="W<?= $ra . $jid; ?>" class="" name="W[<?= $ra . $jid; ?>]">
                                                                     <option value="">--PILIH SKALA PERBANDINGAN--</option>
                                                                     <?php
-                                                                    $this->db->order_by('id_nilai', 'DESC');
+                                                                    $this->db->order_by('jum_nilai', 'DESC');
                                                                     $this->db->from('nilai');
                                                                     $query = $this->db->get();
                                                                     $nilt = $query->result();
                                                                     foreach ($nilt as $keyval) { ?>
-                                                                        <?php
-                                                                        $selected = $this->db->get_where('analisa_krit', ['kriteria_x' => $ra, 'kriteria_y' => $i])->row('nilai_krit');
-                                                                        ?>
-                                                                        <option value="<?= $keyval->jum_nilai; ?>" <?= ($selected && ($keyval->jum_nilai == $selected)) ? 'selected' : ''; ?>><?= $keyval->jum_nilai; ?> - <?= $keyval->ket_nilai; ?></option>
+                                                                        <?php $selected = $this->db->get_where('analisa_krit', ['kriteria_x' => $ra, 'kriteria_y' => $i])->row('nilai_krit'); ?>
+                                                                        <option value="<?= $keyval->jum_nilai; ?>" <?= ($selected && ($keyval->jum_nilai == $selected)) ? 'selected' : ''; ?> style="<?= $keyval->jum_nilai == 1 ? 'background-color: #e68bbe; font-weight: bold; color: #fff;"' : ''; ?>"><?= number_format($keyval->jum_nilai, 2); ?> - <?= $keyval->ket_nilai; ?></option>
                                                                     <?php } ?>
                                                                 </select></td>
                                                             <td style="font-size:15px;"><input type="hidden" id="" name="X[<?= $ra . $jid; ?>]" value="<?= $jo; ?>" hidden><?= $bc['kode_gejala']; ?> - <?= $bc['nama_gejala']; ?></td>
