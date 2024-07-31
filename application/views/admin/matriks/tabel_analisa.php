@@ -382,20 +382,23 @@ $this->load->view('_partials/header');
                                                     $('#finalCR').html(CR.toFixed(4));
 
                                                     if (CR < 0.1) {
-                                                        status = '<span class="float-right badge badge-sm badge-info d-flex align-items-center"><i class="fas fa-check text-white mr-2"></i> <strong>CR KONSISTEN</strong></span>';
-                                                        console.log("CR Konsisten");
+                                                        status = 'Konsisten';
+                                                        msg = '<span class="float-right badge badge-sm badge-info d-flex align-items-center"><i class="fas fa-check text-white mr-2"></i> <strong>CR KONSISTEN</strong></span>';
                                                     } else {
-                                                        status = '<span class="float-right badge badge-sm badge-danger d-flex align-items-center"><i class="fas fa-times text-white mr-2"></i> <strong>CR TIDAK KONSISTEN</strong></span>';
-                                                        console.log("CR Tidak Konsisten");
+                                                        status = 'Tidak Konsisten';
+                                                        msg = '<span class="float-right badge badge-sm badge-danger d-flex align-items-center"><i class="fas fa-times text-white mr-2"></i> <strong>CR TIDAK KONSISTEN</strong></span>';
                                                     }
 
-                                                    $('#finalCR').append(status);
+                                                    $('#finalCR').append(msg);
                                                 })
                                             </script>
                                         </tr>
                                         <table class="table" style="margin : 40px 0 10px 0;">
                                             <tr>
-                                                <td colspan="4"><input type="submit" class="btn btn-fill btn-primary" name="" value="Simpan Ke Database" id="<?= $id_penyakit ?>" name="<?= $id_penyakit ?>"> </td>
+                                                <td>
+                                                    <input type="submit" class="btn btn-fill btn-primary" name="" value="Simpan Ke Database" id="<?= $id_penyakit ?>" name="<?= $id_penyakit ?>">
+                                                    <button class="btn btn-fill btn-danger float-right" onclick="history.back()"><i class="fas fa-sync-alt mr-2"></i>Bandingkan ulang</button>
+                                                </td>
                                             </tr>
                                         </table>
                                     </tbody>
