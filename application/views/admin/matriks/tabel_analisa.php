@@ -369,7 +369,8 @@ $this->load->view('_partials/header');
                                                     const CI = $('.ci').text();
                                                     const n = <?= sizeof($listKrit); ?>;
 
-                                                    const RI_value = RI[n];
+                                                    let RI_value = RI[n];
+                                                    if (n > 10) RI_value = RI[10]
 
                                                     const CR = CI / RI_value;
 
