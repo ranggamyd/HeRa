@@ -309,9 +309,9 @@ $this->load->view('_partials/header');
                                             </tr>
                                         <?php endforeach; ?>
                                         <tr>
-                                            <th class="bg-info text-white">Jumlah</th>
+                                            <th class="bg-secondary">Jumlah</th>
 
-                                            <td class="bg-info text-white" id="sumλmaks"></td>
+                                            <th class="bg-secondary" id="sumλmaks"></th>
                                             <script type="text/javascript">
                                                 $(document).ready(function() {
                                                     var sumλmaks = 0;
@@ -330,9 +330,9 @@ $this->load->view('_partials/header');
 
                                         </tr>
                                         <tr>
-                                            <th class="bg-success text-white">Consistency Ratio <span id="cri" style="float: right;"></span></th>
+                                            <th class="bg-light">Consistency Index (CI) <span id="cri" style="float: right;"></span></th>
 
-                                            <td class="bg-success text-white" id="cr"></td>
+                                            <th class="bg-light ci" id="cr"></th>
                                             <script type="text/javascript">
                                                 $(document).ready(function() {
                                                     var cr = 0,
@@ -343,18 +343,54 @@ $this->load->view('_partials/header');
                                                     b = <?= sizeof($listKrit); ?> - 1;
                                                     cr = a / b;
 
-                                                    if (cr < 0.1) {
-                                                        $('#cri').html('<span class="badge badge-info d-flex align-items-center"><i class="fas fa-check text-white mr-2"></i> <strong>CR KONSISTEN</strong></span>');
-                                                        console.log("Konsisten");
-                                                    } else {
-                                                        $('#cri').html('<span class="badge badge-danger d-flex align-items-center"><i class="fas fa-times text-white mr-2"></i> <strong>CR TIDAK KONSISTEN</strong></span>');
-                                                        console.log("Tidak Konsisten");
-                                                    }
-
                                                     $('#cr').append(cr.toFixed(4));
                                                 });
                                             </script>
 
+                                        </tr>
+                                        <tr>
+                                            <th class="bg-light">Consistency Ratio (CR)</th>
+                                            <th class="bg-light" id="finalCR"></th>
+                                            <script>
+                                                $(document).ready(function() {
+                                                    const RI = {
+                                                        1: 0.00,
+                                                        2: 0.00,
+                                                        3: 0.58,
+                                                        4: 0.90,
+                                                        5: 1.12,
+                                                        6: 1.24,
+                                                        7: 1.32,
+                                                        8: 1.41,
+                                                        9: 1.45,
+                                                        10: 1.49
+                                                    };
+
+                                                    const CI = $('.ci').text();
+                                                    const n = <?= sizeof($listKrit); ?>;
+
+                                                    const RI_value = RI[n];
+
+                                                    const CR = CI / RI_value;
+
+                                                    console.log("n = " + n);
+                                                    console.log("CI = " + CI);
+                                                    console.log("RI = " + RI_value);
+                                                    console.log("CR = " + CR);
+
+                                                    $('#finalCR').html(CR.toFixed(4));
+
+                                                    if (CR < 0.1) {
+                                                        status = '<span class="float-right badge badge-sm badge-info d-flex align-items-center"><i class="fas fa-check text-white mr-2"></i> <strong>CR KONSISTEN</strong></span>';
+                                                        console.log("CR Konsisten");
+                                                    } else {
+                                                        status = '<span class="float-right badge badge-sm badge-danger d-flex align-items-center"><i class="fas fa-times text-white mr-2"></i> <strong>CR TIDAK KONSISTEN</strong></span>';
+                                                        console.log("CR Tidak Konsisten");
+                                                    }
+
+                                                    $('#finalCR').append(status);
+                                                })
+                                            </script>
                                         </tr>
                                         <table class="table" style="margin : 40px 0 10px 0;">
                                             <tr>
