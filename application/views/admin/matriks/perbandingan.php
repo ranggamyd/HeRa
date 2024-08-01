@@ -157,10 +157,11 @@ $this->load->view('_partials/header');
                 <a href="#matriks" class="d-block collapsed card-header bg-info py-3" data-toggle="collapse" role="button" aria-expanded="true" aria-controls="matriks">
                     <h5 class="m-0 font-weight-bold text-light">Matriks Perbandingan Gejala Penyakit <?= $nama_penyakit ?></h5>
                 </a>
+
                 <div class="collapse" id="matriks">
                     <div class="card-body">
-                        <!-- Tabel Analisa Kriteria(Gejala)-->
-                        <div class="card shadow mb-3">
+
+                        <div class="card shadow-sm mb-3">
                             <?php
                             // $this->db->from('gejala');
                             // $query = $this->db->get();
@@ -177,7 +178,7 @@ $this->load->view('_partials/header');
                             ?>
                             <!-- Analisa -->
                             <div class="card card-header">
-                                <h5 class="m-0 font-weight-bold text-dark">Tabel Analisa Kriteria(Gejala)</h5>
+                                <h4 class="title">Tabel Analisa Kriteria(Gejala) </h4>
                             </div>
                             <div class="card-body">
                                 <div class="table-responsive">
@@ -227,12 +228,7 @@ $this->load->view('_partials/header');
                                                             $('.calculate<?= $re; ?>').each(function(e) {
                                                                 sumR += parseFloat($(this).text());
                                                             });
-                                                            var sumRText = sumR.toFixed(5);
-                                                            if (parseFloat(sumRText) == Math.floor(sumR)) {
-                                                                $('#sumR<?= $re; ?>').html(Math.floor(sumR));
-                                                            } else {
-                                                                $('#sumR<?= $re; ?>').html(sumRText);
-                                                            }
+                                                            $('#sumR<?= $re; ?>').html(sumR.toFixed(5));
                                                         });
                                                     </script>
                                                 <?php endforeach; ?>
@@ -246,7 +242,7 @@ $this->load->view('_partials/header');
                         <!-- Perbandingan -->
                         <div class="card shadow-sm mb-3">
                             <div class="card card-header">
-                                <h5 class="m-0 font-weight-bold text-dark">Tabel Perbandingan Analisa</h5>
+                                <h4 class="title">Tabel Perbandingan Analisa</h4>
                             </div>
                             <div class="card-body">
                                 <div class="table-responsive">
@@ -305,6 +301,31 @@ $this->load->view('_partials/header');
                                                     </script>
                                                     <td class="bg-info text-white" id="to<?= $rx; ?>"></td>
                                                     <td class="bg-success text-white" id="tav<?= $rx; ?>"></td>
+                                                    <!-- <td class="bg-warning text-white" id="λmaks<?= $rx; ?>"></td> -->
+                                                    <script type="text/javascript">
+                                                        $(document).ready(function() {
+                                                            <?php foreach ($listKrit as $tt) : ?>
+                                                                var sumR<?= $tt->id_gejala; ?> = parseFloat($('#sumR<?= $tt->id_gejala; ?>').text());
+                                                            <?php endforeach; ?>
+
+                                                            <?php foreach ($listKrit as $bc) : ?>
+                                                                var rx<?= $bc->id_gejala; ?> = <?= $bc->id_gejala; ?>;
+                                                                var sumAX<?= $bc->id_gejala; ?> = 0;
+                                                                $('.calmul<?= $bc->id_gejala; ?>').each(function(e) {
+                                                                    sumAX<?= $bc->id_gejala; ?> += parseFloat($(this).text());
+                                                                });
+                                                                $('#to<?= $bc->id_gejala; ?>').html(sumAX<?= $bc->id_gejala; ?>.toFixed(4));
+                                                                $('#top<?= $bc->id_gejala; ?>').html(sumAX<?= $bc->id_gejala; ?>.toFixed(4));
+                                                                var avgAX<?= $bc->id_gejala; ?> = sumAX<?= $bc->id_gejala; ?> / <?= count($listKrit); ?>;
+                                                                $('#tav<?= $bc->id_gejala; ?>').html(avgAX<?= $bc->id_gejala; ?>.toFixed(4));
+
+                                                                // Perhitungan #λmaks
+                                                                var λmaks<?= $bc->id_gejala; ?> = avgAX<?= $bc->id_gejala; ?> * sumR<?= $bc->id_gejala; ?>;
+                                                                $('#λmaks<?= $bc->id_gejala; ?>').html(λmaks<?= $bc->id_gejala; ?>.toFixed(4));
+                                                                $('#λmaks1<?= $bc->id_gejala; ?>').html(λmaks<?= $bc->id_gejala; ?>.toFixed(4));
+                                                            <?php endforeach; ?>
+                                                        });
+                                                    </script>
                                                 </tr>
                                             <?php endforeach; ?>
                                         </tbody>
@@ -316,7 +337,7 @@ $this->load->view('_partials/header');
                         <!-- Penjumlahan -->
                         <div class="card shadow-sm mb-3">
                             <div class="card card-header">
-                                <h5 class="m-0 font-weight-bold text-dark">Tabel Analisa Prioritas</h5>
+                                <h4 class="title">Tabel Analisa Prioritas</h4>
                             </div>
                             <div class="card-body">
                                 <div class="table-responsive">
@@ -383,46 +404,133 @@ $this->load->view('_partials/header');
                         <!-- Rasio Konsistensi -->
                         <div class="card shadow-sm mb-3">
                             <div class="card card-header">
-                                <h5 class="m-0 font-weight-bold text-dark">Tabel Rasio Konsistensi</h5>
+                                <h4 class="title">Tabel Rasio Konsistensi</h4>
                             </div>
                             <div class="card-body">
                                 <div class="table-responsive">
-                                    <form class="" action="<?= base_url('matriks/updateNiKr'); ?>" method="post" onsubmit="return check()">
+                                    <form class="" action="<?= base_url('matriks/updateNiKr/') . $id_penyakit; ?>" method="post" onsubmit="return check()">
                                         <table class="table border-1 table-hover table-striped">
                                             <thead>
                                                 <tr>
-                                                    <th>Rasio Konsistensi</th>
-                                                    <th class="bg-info text-white">Jumlah</th>
-                                                    <th class="bg-success text-white">Prioritas</th>
-                                                    <!-- <th class="bg-warning text-white">Hasil</th> -->
+                                                    <th>Kriteria</th>
+                                                    <th class="bg-warning text-white">(λ maks)</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
                                                 <?php foreach ($listKrit as $bc) :
-                                                    // $pt = explode("C",$bc->id_gejala);
                                                     $rx = $bc->id_gejala;
                                                 ?>
                                                     <tr>
                                                         <td style="width: 55%;"><b><?= $bc->nama_gejala; ?></b></td>
-                                                        <td class="bg-info text-white col-xs-2" id="traj<?= $rx; ?>"></td>
-                                                        <td class="bg-success text-white col-xs-2" id="trap<?= $rx; ?>"></td>
+                                                        <td class="bg-warning text-white" id="λmaks1<?= $rx; ?>"></td>
+
                                                         <script type="text/javascript">
                                                             $(document).ready(function() {
-                                                                var hsl = 0;
-                                                                hsl += parseFloat($('#traj<?= $rx; ?>').text()) + parseFloat($('#trap<?= $rx; ?>').text());
-                                                                $('#taha<?= $rx; ?>').val(hsl.toFixed(5));
-                                                                $('#yo<?= $rx; ?>').html(hsl.toFixed(5));
+                                                                var sumAX = 0;
+                                                                $('.calmul<?= $rx; ?>').each(function(e) {
+                                                                    sumAX += parseFloat($(this).text());
+                                                                });
+                                                                $('#to<?= $rx; ?>').html(sumAX.toFixed(4));
+                                                                avgAX = parseFloat($('#to<?= $rx; ?>').text()) / <?= sizeof($listKrit); ?>;
+                                                                $('#tav<?= $rx; ?>').html(avgAX.toFixed(4));
+                                                                $('#trap<?= $rx; ?>').html(avgAX.toFixed(4));
+                                                                $('#trap2<?= $rx; ?>').val(avgAX.toFixed(4));
                                                             });
                                                         </script>
-                                                        <td hidden><input id="id_gejala" type="hidden" name="id_gejala[<?= $rx; ?>]" value="<?= $bc->id_gejala; ?>"></td>
-                                                        <!-- <td class="bg-warning text-white col-xs-2"><input readonly class="form-control bg-light" type="hidden" name="hasil[<?= $rx; ?>]" id="taha<?= $rx; ?>" value=""></td> -->
+                                                        <td hidden><input id="id_gejala" type="text" name="id_gejala[<?= $rx; ?>]" value="<?= $bc->id_gejala; ?>"></td>
+                                                        <td hidden>
+                                                            <input type="text" name="id_penyakit" value="<?= $id_penyakit ?>">
+                                                        </td>
+                                                        <td hidden class="bg-warning text-white w-50">
+                                                            <input readonly class="form-control" type="text" name="hasil[<?= $rx; ?>]" id="trap2<?= $rx; ?>" value="">
+                                                        </td>
                                                     </tr>
                                                 <?php endforeach; ?>
-                                                <!-- <table class="table" style="margin : 40px 0 10px 0;">
                                                 <tr>
-                                                    <td colspan="4"><input type="submit" class="btn btn-fill btn-info" name="" value="Simpan Ke Database"> </td>
+                                                    <th class="bg-secondary">Jumlah</th>
+
+                                                    <th class="bg-secondary" id="sumλmaks"></th>
+                                                    <script type="text/javascript">
+                                                        $(document).ready(function() {
+                                                            var sumλmaks = 0;
+                                                            $('.bg-warning.text-white').each(function() {
+                                                                var val = parseFloat($(this).text());
+                                                                if (!isNaN(val)) {
+                                                                    sumλmaks += val;
+                                                                } else {
+                                                                    console.error("Nilai NaN ditemukan:", $(this).text());
+                                                                }
+                                                            });
+
+                                                            $('#sumλmaks').html(sumλmaks.toFixed(4));
+                                                        });
+                                                    </script>
+
                                                 </tr>
-                                            </table> -->
+                                                <tr>
+                                                    <th class="bg-light">Consistency Index (CI) <span id="cri" style="float: right;"></span></th>
+
+                                                    <th class="bg-light ci" id="cr"></th>
+                                                    <script type="text/javascript">
+                                                        $(document).ready(function() {
+                                                            var cr = 0,
+                                                                a = 0,
+                                                                b = 0;
+
+                                                            a = parseFloat($('#sumλmaks').text()) - <?= sizeof($listKrit); ?>;
+                                                            b = <?= sizeof($listKrit); ?> - 1;
+                                                            cr = a / b;
+
+                                                            $('#cr').append(cr.toFixed(4));
+                                                        });
+                                                    </script>
+
+                                                </tr>
+                                                <tr>
+                                                    <th class="bg-light">Consistency Ratio (CR)</th>
+                                                    <th class="bg-light" id="finalCR"></th>
+                                                    <script>
+                                                        $(document).ready(function() {
+                                                            const RI = {
+                                                                1: 0.00,
+                                                                2: 0.00,
+                                                                3: 0.58,
+                                                                4: 0.90,
+                                                                5: 1.12,
+                                                                6: 1.24,
+                                                                7: 1.32,
+                                                                8: 1.41,
+                                                                9: 1.45,
+                                                                10: 1.49
+                                                            };
+
+                                                            const CI = $('.ci').text();
+                                                            const n = <?= sizeof($listKrit); ?>;
+
+                                                            let RI_value = RI[n];
+                                                            if (n > 10) RI_value = RI[10]
+
+                                                            const CR = CI / RI_value;
+
+                                                            console.log("n = " + n);
+                                                            console.log("CI = " + CI);
+                                                            console.log("RI = " + RI_value);
+                                                            console.log("CR = " + CR);
+
+                                                            $('#finalCR').html(CR.toFixed(4));
+
+                                                            if (CR < 0.1) {
+                                                                status = 'Konsisten';
+                                                                msg = '<span class="float-right badge badge-sm badge-info d-flex align-items-center"><i class="fas fa-check text-white mr-2"></i> <strong>CR KONSISTEN</strong></span>';
+                                                            } else {
+                                                                status = 'Tidak Konsisten';
+                                                                msg = '<span class="float-right badge badge-sm badge-danger d-flex align-items-center"><i class="fas fa-times text-white mr-2"></i> <strong>CR TIDAK KONSISTEN</strong></span>';
+                                                            }
+
+                                                            $('#finalCR').append(msg);
+                                                        })
+                                                    </script>
+                                                </tr>
                                             </tbody>
                                         </table>
                                     </form>
@@ -430,7 +538,6 @@ $this->load->view('_partials/header');
                                 </div>
                             </div>
                         </div>
-
                     </div>
                 </div>
             </div>
