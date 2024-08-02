@@ -60,7 +60,7 @@ class Rule extends CI_Controller
 
             $this->rule_model->edit($data, $id_rule);
 
-            $this->session->set_flashdata('sukses', 'Berhasil menambah rule !');
+            $this->session->set_flashdata('sukses', 'Berhasil mengubah rule !');
             redirect('rule');
         } else {
             $this->session->set_flashdata('gagal', 'Data Sudah Ada !');

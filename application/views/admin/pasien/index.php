@@ -77,7 +77,7 @@ $this->load->view('_partials/header');
                     <label for="nama_kelinci">Nama Kelinci :</label>
                     <input type="text" class="form-control mb-3" id="nama_kelinci" name="nama_kelinci" required>
                     <label for="alamat">Alamat :</label>
-                    <textarea name="alamat" id="alamat" cols="10" rows="4" class="form-control"></textarea>
+                    <textarea name="alamat" id="alamat" cols="10" rows="4" class="form-control" required></textarea>
             </div>
             <div class="modal-footer">
                 <button type="reset" class="btn btn-outline-secondary"><i class="fas fa-undo mr-1"></i> Reset</button>

@@ -139,7 +139,7 @@
                       <label for="nama_kelinci">Nama Kelinci :</label>
                       <input type="text" class="form-control main-form mb-3" id="nama_kelinci" name="nama_kelinci" required>
                       <label for="alamat">Alamat :</label>
-                      <textarea name="alamat" id="alamat" cols="10" rows="4" class="form-control main-form"></textarea>
+                      <textarea name="alamat" id="alamat" cols="10" rows="4" class="form-control main-form" required></textarea>
                     </div>
                   </div>
                 </div>

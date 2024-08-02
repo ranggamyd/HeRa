@@ -31,12 +31,14 @@ class Pasien extends CI_Controller
         $nama           = $this->input->post('nama');
         $umur           = $this->input->post('umur');
         $no_hp  = $this->input->post('no_hp');
+        $nama_kelinci  = $this->input->post('nama_kelinci');
         $alamat         = $this->input->post('alamat');
 
         $data = [
             'nama'          => $nama,
             'umur'          => $umur,
             'no_hp' => $no_hp,
+            'nama_kelinci' => $nama_kelinci,
             'alamat'        => $alamat,
         ];
 
@@ -48,12 +50,14 @@ class Pasien extends CI_Controller
         $nama           = $this->input->post('nama');
         $umur           = $this->input->post('umur');
         $no_hp  = $this->input->post('no_hp');
+        $nama_kelinci  = $this->input->post('nama_kelinci');
         $alamat         = $this->input->post('alamat');
 
         $data = [
             'nama'          => $nama,
             'umur'          => $umur,
             'no_hp' => $no_hp,
+            'nama_kelinci' => $nama_kelinci,
             'alamat'        => $alamat,
         ];
 

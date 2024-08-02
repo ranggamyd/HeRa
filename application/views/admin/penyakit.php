@@ -67,9 +67,9 @@ $this->load->view('_partials/header');
                         <label for="nama_penyakit">Nama penyakit :</label>
                         <input type="text" class="form-control mb-3" id="nama_penyakit" name="nama_penyakit" required>
                         <label for="deskripsi">Deskripsi :</label>
-                        <textarea name="deskripsi" id="deskripsi" cols="12" rows="5" class="form-control"></textarea>
+                        <textarea name="deskripsi" id="deskripsi" cols="12" rows="5" class="form-control" required></textarea>
                         <label for="solusi">Solusi :</label>
-                        <textarea name="solusi" id="solusi" cols="12" rows="5" class="form-control"></textarea>
+                        <textarea name="solusi" id="solusi" cols="12" rows="5" class="form-control" required></textarea>
                 </div>
                 <div class="modal-footer">
                     <button type="reset" class="btn btn-outline-secondary"><i class="fas fa-undo mr-1"></i>
