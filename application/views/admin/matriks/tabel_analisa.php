@@ -309,9 +309,9 @@ $this->load->view('_partials/header');
                                             </tr>
                                         <?php endforeach; ?>
                                         <tr>
-                                            <th class="bg-secondary">Jumlah</th>
+                                            <th class="bg-secondary text-light">Jumlah</th>
 
-                                            <th class="bg-secondary" id="sumλmaks"></th>
+                                            <th class="bg-secondary text-light" id="sumλmaks"></th>
                                             <script type="text/javascript">
                                                 $(document).ready(function() {
                                                     var sumλmaks = 0;
